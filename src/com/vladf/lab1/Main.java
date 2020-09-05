@@ -66,27 +66,23 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
         p.setName(keyboard.nextLine());
         System.out.println("Manufacturer: ");
         p.setManuf(keyboard.nextLine());
-        System.out.println("Price per 1: ");
+        System.out.println("Price per 1: (from 1 to 999 else set 0)");
         InputError(p,'p');
-        System.out.println("Ammount: ");
+        System.out.println("Ammount: (from 1 to 9999 else set 0)");
         InputError(p,'a');
         System.out.println("Storehouse number: ");
-
         InputError(p,'s');
-        System.out.println("Min consignment: ");
+        System.out.println("Min consignment: (bigger then 0 else set 0) ");
         InputError(p,'m');
     }
 
     public static void main(String[] args) throws IOException {
-    //Product p = new Product("jh","",0,0,Product.shouse.main,0);
-//        ArrayList<Product> arr = new ArrayList<>();
-//        Product p1 = new Product();
 
         ArrayList<Product> arr = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
 
         Menu();
         do {
+            Scanner sc = new Scanner(System.in);
             if (sc.hasNextInt()) {
                 ClearScreen();
                 switch (sc.nextInt()) {
@@ -99,8 +95,9 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
                         break;
                     case (2):
                         for (int i = 0; i < arr.size(); i++) {
-                            System.out.println(arr.get(i).toString());
+                            System.out.println(i+1 +". " + arr.get(i).toString());
                         }
+                        System.out.println("");
                         Menu();
                         break;
                     case (3):
@@ -110,7 +107,7 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
                 }
             }
             else
-                sc.close();
+                System.out.println("Unknown command");
         }while (true);
 
     }
