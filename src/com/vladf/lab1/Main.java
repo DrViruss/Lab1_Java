@@ -1,27 +1,61 @@
 package com.vladf.lab1;
 
 import java.io.IOException;
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    private static void Menu()
-    {
-        System.out.println("1.Add new product\n2.Show All\n3.Exit");
+    private static void Menu() {
+        System.out.println("1.Add new product\n2.Show All\n3.Remove\n4.Exit");
     }
-private static void ClearScreen() throws IOException { //Dont work on IDA
-    String os = System.getProperty("os.name");
-    if(os.contains("Windows"))
-        Runtime.getRuntime().exec("CLS");
-    else
-        Runtime.getRuntime().exec("clear");
-    System.out.println("/-----------------------------------------/");
-}
 
+    private static void remove(ArrayList<Product> arr) throws IOException {
+        do {
+            Scanner ssc = new Scanner(System.in);
+            if(ssc.hasNextInt()) {
+                int _tmp = ssc.nextInt();
+                if(_tmp>0) {
+                    if (_tmp <= arr.size()) {
+                        arr.remove(_tmp-1);
+                        ClearScreen();
+                        System.out.println("Succes!");
+                        break;
+                    }
+                    else {
+                        ClearScreen();
+                        System.out.println("We dont have product with that numver. Abording...");
+                        break;
+                    }
+                }
+                else if(_tmp==0) {
+                    ClearScreen();
+                    System.out.println("Abording...");
+                    break;
+                }
+            }
+            else {
+                ClearScreen();
+                System.out.println("Unknown number");
+            }
 
-    private static void InputError( Product p, char type)
-    {
+        }while (true);
+    }
+
+    private static void ClearScreen() throws IOException { //Dont work on IDA
+       // String os = System.getProperty("os.name");
+       // if (os.contains("Windows"))
+       //     Runtime.getRuntime().exec("CLS");
+       // else {
+       // Runtime.getRuntime().exec("clear");
+       //}
+       System.out.println("\033[H\033[2J");
+       System.out.flush();
+       System.out.println("/-----------------------------------------/");
+    }
+
+    private static void InputError(Product p, char type) {
         boolean done = false;
         do {
             Scanner ssc = new Scanner(System.in);
@@ -30,36 +64,33 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
                 switch (type) {
                     case ('p'):
                         p.setPrice(_tmp);
-                        done=true;
+                        done = true;
                         break;
                     case ('a'):
                         p.setAmmount(_tmp);
-                        done=true;
+                        done = true;
                         break;
                     case ('m'):
                         p.setMin_consig(_tmp);
-                        done=true;
+                        done = true;
                         break;
                     case ('s'):
-                        if(_tmp > 0 && _tmp<4) {
+                        if (_tmp > 0 && _tmp < 4) {
                             p.setShouse((byte) _tmp);
                             done = true;
-                        }
-                        else
+                        } else
                             System.out.println("We currently don't have storehouse with that number (only 1,2,3)");
 
                         break;
 
                 }
-            }
-            else
+            } else
                 System.out.println("ERROR");
 
-        }while (!done);
+        } while (!done);
     }
 
-    private static void Input(Product p)
-    {
+    private static void Input(Product p) {
         Scanner keyboard = new Scanner(System.in);
 
         System.out.println("Name: ");
@@ -67,13 +98,13 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
         System.out.println("Manufacturer: ");
         p.setManuf(keyboard.nextLine());
         System.out.println("Price per 1: (from 1 to 999 else set 0)");
-        InputError(p,'p');
+        InputError(p, 'p');
         System.out.println("Ammount: (from 1 to 9999 else set 0)");
-        InputError(p,'a');
+        InputError(p, 'a');
         System.out.println("Storehouse number: ");
-        InputError(p,'s');
+        InputError(p, 's');
         System.out.println("Min consignment: (bigger then 0 else set 0) ");
-        InputError(p,'m');
+        InputError(p, 'm');
     }
 
     public static void main(String[] args) throws IOException {
@@ -101,6 +132,12 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
                         Menu();
                         break;
                     case (3):
+                        System.out.println("Please input number of element (0 - abord)");
+                        remove(arr);
+                        Menu();
+                        break;
+                    case (4):
+                        System.out.println("BYE");
                         System.exit(0);
                     default:
                         System.out.println("IDK this command");
@@ -111,4 +148,6 @@ private static void ClearScreen() throws IOException { //Dont work on IDA
         }while (true);
 
     }
-}
+
+
+    }
