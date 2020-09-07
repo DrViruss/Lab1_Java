@@ -6,7 +6,7 @@ public @NoArgsConstructor /*@AllArgsConstructor*/ @ToString class Product {
     private @Setter @Getter String name;
     private @Setter @Getter String manuf;
     private @Getter int price;
-    private @Getter int ammount;
+    private @Getter int amount;
     private @Getter Product.shouse shouse;
     private @Getter int min_consig;
 
@@ -21,9 +21,9 @@ public @NoArgsConstructor /*@AllArgsConstructor*/ @ToString class Product {
             this.price = price;}
     }
 
-    public void setAmmount(int ammount) {
-        if(ammount > 0 && ammount < 9999)
-            this.ammount = ammount;
+    public void setAmount(int amount) {
+        if(amount > 0 && amount < 9999)
+            this.amount = amount;
     }
 
     public void setShouse(byte shouseNumb) {

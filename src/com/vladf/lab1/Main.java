@@ -44,12 +44,6 @@ public class Main {
     }
 
     private static void ClearScreen() throws IOException { //Dont work on IDA
-       // String os = System.getProperty("os.name");
-       // if (os.contains("Windows"))
-       //     Runtime.getRuntime().exec("CLS");
-       // else {
-       // Runtime.getRuntime().exec("clear");
-       //}
        System.out.println("\033[H\033[2J");
        System.out.flush();
        System.out.println("/-----------------------------------------/");
@@ -67,7 +61,7 @@ public class Main {
                         done = true;
                         break;
                     case ('a'):
-                        p.setAmmount(_tmp);
+                        p.setAmount(_tmp);
                         done = true;
                         break;
                     case ('m'):
@@ -99,7 +93,7 @@ public class Main {
         p.setManuf(keyboard.nextLine());
         System.out.println("Price per 1: (from 1 to 999 else set 0)");
         InputError(p, 'p');
-        System.out.println("Ammount: (from 1 to 9999 else set 0)");
+        System.out.println("Amount: (from 1 to 9999 else set 0)");
         InputError(p, 'a');
         System.out.println("Storehouse number: ");
         InputError(p, 's');
