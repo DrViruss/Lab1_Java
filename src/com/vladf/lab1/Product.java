@@ -3,12 +3,12 @@ package com.vladf.lab1;
 import lombok.*;
 
 public @NoArgsConstructor /*@AllArgsConstructor*/ @ToString class Product {
-    private @Setter @Getter String name;
-    private @Setter @Getter String manuf;
-    private @Getter int price;
-    private @Getter int amount;
-    private @Getter Product.shouse shouse;
-    private @Getter int min_consig;
+    private @Setter  String name;
+    private @Setter  String manuf;
+    private int price;
+    private int amount;
+    private Product.shouse shouse;
+    private int min_consig;
 
     //I don't have another idea :D
     private static shouse sh;
