@@ -1,4 +1,4 @@
-package com.vladf.lab1;
+package com.vladf.labs.lab1;
 
 import lombok.*;
 

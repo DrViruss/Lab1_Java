@@ -1,7 +1,6 @@
-package com.vladf.lab1;
+package com.vladf.labs.lab1;
 
 import java.io.IOException;
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
